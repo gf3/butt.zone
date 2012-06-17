@@ -1,0 +1,17 @@
+%section#read
+  .toolbar
+    = link_to "Home", "/", class: "button left inset", title: "Home"
+    %time( title="Posted #{time_ago_in_words @time} ago" )= @time.strftime "%B #{@time.day.ordinalize}, %Y"
+
+  %article( role="article" )
+    %header
+      %h2= @title
+      %p= @tagline
+
+    = @content
+
+  %p.follow-me
+    You should probably
+    = link_to("follow me on Twitter", "//twitter.com/gf3") + "."
+    Jussayin'.
+

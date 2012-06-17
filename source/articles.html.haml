@@ -1,0 +1,20 @@
+%section#articles
+  .toolbar
+    = link_to "Home", "/", class: "button left inset", title: "Home"
+
+  %header
+    %h2 Musings &amp; Rants
+
+  %ol.articles
+    - @articles.each do |article|
+      %li
+        = link_to article[:url] do
+          %h3= article[:title]
+          %p=  article[:tagline]
+          %time( title="Posted #{time_ago_in_words article[:time]} ago" )= article[:time].strftime "%B #{article[:time].day.ordinalize}, %Y"
+
+  %p.follow-me
+    You should probably
+    = link_to("follow me on Twitter", "//twitter.com/gf3") + "."
+    Jussayin'.
+
