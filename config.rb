@@ -93,7 +93,7 @@ Dir["source/read/*/main.md"].each do |file|
 end
 
 page "/articles.html", proxy: "/articles.html.haml", ignore: true do
-  @articles = articles.each {|a| a[:url] = "/read/#{a[:slug]}.html" }.sort {|a, b| b[:time] <=> a[:time] }
+  @articles = articles.each {|a| a[:url] = "/read/#{a[:slug]}" }.sort {|a, b| b[:time] <=> a[:time] }
 end
 
 ###

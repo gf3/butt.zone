@@ -208,6 +208,10 @@ header[role=banner]
         margin-top: 0
         color: $font-color-light
 
+    p
+      img
+        width: 100%
+
 #divisor
   z-index: -1
   position: absolute
@@ -216,7 +220,7 @@ header[role=banner]
   bottom: 0
   left:   0
   border-top: 1px solid #bdbdbd
-  +translateY(rel-height(6))
+  +translateY(rel-height(5))
   +background-image(linear-gradient(hsla(0, 0%, 0%, .1) , hsla(0, 0%, 0%, 0) 250px))
   opacity: 0
 
