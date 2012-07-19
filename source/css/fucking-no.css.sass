@@ -52,6 +52,8 @@ body
   // Ugh... bug...
   // +background-image(radial-gradient(transparent 75%, hsla(0, 0%, 0%, .1)))
   // background-attachment: fixed
+  padding-right: 1em
+  padding-left:  1em
   font:
     family: $font-family
     size: ($base-font-size / 16) * 1em
@@ -59,6 +61,11 @@ body
     weight: 400
   line-height: ($base-line-height / $base-font-size) * 1em
   color: $font-color
+
+@media screen and (min-width: 35em)
+  body
+    padding-right: 0
+    padding-left:  0
 
 html, body, h1, div[role=main], #divisor, #index, #read, #articles, footer
   +reduce-flicker
@@ -139,8 +146,10 @@ header[role=banner]
 
   nav
     position: absolute
-    top:   rel-height(2)
+    top:   rel-height(.5)
     right: 0
+    left:  0
+    text-align: center
 
     ul
       display: block
@@ -153,6 +162,15 @@ header[role=banner]
         
         & + li
           margin-left: 1em
+
+@media screen and (min-width: 35em)
+  header[role=banner]
+    nav
+      position: absolute
+      top:   rel-height(2)
+      right: 0
+      left:  auto
+      text-align: left
 
 
 ///\\\///\\\///\\\
