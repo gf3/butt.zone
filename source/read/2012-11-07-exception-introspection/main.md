@@ -17,7 +17,7 @@ Typically in JavaScript we'd introspect this from the exception's constructor. N
 
 **WRONG!** You won't even be able to get `constructor` let alone `name`. No matter how you try and coerce it out of the exception's `JSObject` you'll find yourself with undefined values and empty dreams.
 
-Fortunately my friend, Malcolm, had the deliciously evil idea of injecting JavaScript into the page, reflecting, and then passing the value back to Objective-C. Thankfully WebKit provides us with a few nifty methods to connect our Objective-C with JavaScript et vice versa. It sounded just crazy enough to try:
+Fortunately my friend, [Malcolm](//twitter.com/mjarvis), had the deliciously evil idea of injecting JavaScript into the page, reflecting, and then passing the value back to Objective-C. Thankfully WebKit provides us with a few nifty methods to connect our Objective-C with JavaScript et vice versa. It sounded just crazy enough to try:
 
 ```objective-c
 - (void)webView:(WebView *)webView exceptionWasRaised:(WebScriptCallFrame *)frame hasHandler:(BOOL)hasHandler sourceId:(WebSourceId)sid line:(int)lineno forWebFrame:(WebFrame *)webFrame
