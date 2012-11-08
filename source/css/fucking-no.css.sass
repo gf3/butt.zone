@@ -136,6 +136,7 @@ header[role=banner]
 
   h1
     line-height: rel-height()
+    text-align: center
 
     span
       margin-left: .5em
@@ -166,6 +167,9 @@ header[role=banner]
 
 @media screen and (min-width: 35em)
   header[role=banner]
+    h1
+      text-align: left
+
     nav
       position: absolute
       top:   rel-height(2)
@@ -203,18 +207,10 @@ header[role=banner]
 ///\\\///\\\///\\\
 #read
   +sizify
-  border: 1px solid #bdbdbd
-  border-radius: 5px
   background: #FFF
-  +box-shadow(0 1px 1px hsla(0, 0%, 0%, .15))
 
   article
     padding: rel-height(2) 0 0
-    +background-image(linear-gradient(top, #f7f7f7 0px, #ffffff 150px))
-
-    > *
-      margin-right: rel-height()
-      margin-left:  rel-height()
 
     & > *:first-child
       margin-top: 0
@@ -239,6 +235,20 @@ header[role=banner]
       margin-right: 0
       margin-left:  0
 
+@media screen and (min-width: 35em)
+  #read
+    border: 1px solid #bdbdbd
+    border-radius: 5px
+    +box-shadow(0 1px 1px hsla(0, 0%, 0%, .15))
+
+    article
+      +background-image(linear-gradient(top, #f7f7f7 0px, #ffffff 150px))
+
+      > *
+        margin-right: rel-height()
+        margin-left:  rel-height()
+
+
 #divisor
   z-index: -1
   position: absolute
@@ -251,10 +261,16 @@ header[role=banner]
   +background-image(linear-gradient(hsla(0, 0%, 0%, .1) , hsla(0, 0%, 0%, 0) 250px))
   opacity: 0
 
-body.read, body.articles
+  display: none
+
+@media screen and (min-width: 35em)
   #divisor
-    opacity: .4
-    +transition(opacity 1s ease-in-out 1.25s)
+    display: block
+
+  body.read, body.articles
+    #divisor
+      opacity: .4
+      +transition(opacity 1s ease-in-out 1.25s)
 
 
 ///\\\///\\\///\\\
@@ -262,10 +278,7 @@ body.read, body.articles
 ///\\\///\\\///\\\
 #articles
   +sizify
-  border: 1px solid #bdbdbd
-  border-radius: 5px
   background: #FFF
-  +box-shadow(0 1px 1px hsla(0, 0%, 0%, .15))
 
   > header
     display: none
@@ -281,8 +294,7 @@ body.read, body.articles
     > li
       display: block
       margin:  0
-      padding: rel-height(2) rel-height()rel-height()
-      +background-image(linear-gradient(top, #F7F7F7 0px, #FFFFFF 50px))
+      padding: rel-height(2) 0 rel-height()
 
       & + li
         border-top: 1px solid #CCC
@@ -329,14 +341,28 @@ body.read, body.articles
           +reduce-flicker
           opacity: 0
 
-        &:hover
-          &::after
-            +translateX(0)
-            opacity: 1
 
   .follow-me
     margin-top: rel-height(2)
 
+@media screen and (min-width: 35em)
+  #articles
+    border: 1px solid #bdbdbd
+    border-radius: 5px
+    +box-shadow(0 1px 1px hsla(0, 0%, 0%, .15))
+
+    > ol
+
+      > li
+        padding-right: rel-height()
+        padding-left:  rel-height()
+        +background-image(linear-gradient(top, #F7F7F7 0px, #FFFFFF 50px))
+
+        a
+          &:hover
+            &::after
+              +translateX(0)
+              opacity: 1
 
 ///\\\///\\\///\\\
 ///   FOOTER   \\\
@@ -423,19 +449,38 @@ body > footer
 // Toolbar
 .toolbar
   position: relative
-  padding: 0 rel-height() 0 rel-height()
-  height:      rel-height(2)
-  line-height: rel-height(2)
-  border-bottom: 1px solid #a7a7a7
-  +border-top-radius(5px)
-  background: #F8F9FA
-  +background-image(linear-gradient(top, #F6F6F6, #E2E2E2))
-  box-shadow: #fff 0 1px 0 inset, #ededed 0 -1px inset, #e2e2e2 0 1px 0
-  font-size: 14px
+  height:      rel-height(1)
+  line-height: rel-height(1)
+  overflow: hidden
 
-  time
-    float: right
-    text-shadow: 0 1px #FFF
+  color: #C4C4C4
+  font-size: 14px
+  text-align: center
+
+  a
+    display: none
+
+@media screen and (min-width: 35em)
+  .toolbar
+    position: relative
+    padding: 0 rel-height() 0 rel-height()
+    height:      rel-height(2)
+    line-height: rel-height(2)
+    border-bottom: 1px solid #a7a7a7
+    +border-top-radius(5px)
+    background: #F8F9FA
+    +background-image(linear-gradient(top, #F6F6F6, #E2E2E2))
+
+    color: $font-color
+    text-align: left
+    box-shadow: #fff 0 1px 0 inset, #ededed 0 -1px inset, #e2e2e2 0 1px 0
+
+    a
+      display: inline-block
+
+    time, span
+      float: right
+      text-shadow: 0 1px #FFF
 
 // Follow Me
 p.follow-me
