@@ -1,5 +1,5 @@
 { "title": "peg.vim"
-, "tagline": "Better than regular expresseions."
+, "tagline": "Better than regular expressions."
 , "categories": [ "vim", "peg" ]
 }
 
