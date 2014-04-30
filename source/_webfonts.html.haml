@@ -49,7 +49,16 @@
       -o-transition-delay:      1.5s
       transition-delay:         1.5s
 
-= javascript_include_tag "http://use.typekit.com/lxl3lzd.js"
 :javascript
-  try{Typekit.load();}catch(e){}
-
+  WebFontConfig = {
+    google: { families: [ 'Lato:400,700:latin', 'PT+Sans::latin', 'PT+Mono::latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
